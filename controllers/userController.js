@@ -1,6 +1,7 @@
 const User = require("../models/UserModel");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
+const auth = require("../auth");
 
 // register 
 module.exports.registerUser = async (req, res) => {
