@@ -17,6 +17,9 @@ const appointmentSchema = new mongoose.Schema ({
 		type: Boolean,
 		default : true,
 		required : [true, "Contact Number is required"]
+	},
+	note : {
+		type: String
 	}
 })
 
