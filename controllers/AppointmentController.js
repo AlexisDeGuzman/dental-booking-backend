@@ -1,7 +1,8 @@
 const Appointment = require("../models/AppointmentModel");
 const auth = require("../auth");
 
-module.exports.getAvailableSchedule = async (req, res) => {
+// Retrieve available Time
+module.exports.getAvailableTime = async (req, res) => {
 	const { date } = req.body;
 
 	try {
@@ -16,7 +17,11 @@ module.exports.getAvailableSchedule = async (req, res) => {
 			return appointment.isAvailable === true;
 	    });
 
-	    res.send(availableAppointments);
+	    const availableTime = availableAppointments.map((appointment) => {
+	    	return appointment.time;
+	    })
+
+	    res.send(availableTime);
 	} catch (error) {
 	    console.error("Error getting all available schedule", error);
 	    return res.status(500).send(error);

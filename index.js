@@ -5,6 +5,7 @@ const dotenv = require("dotenv").config();
 
 // Import routes 
 const userRoutes = require("./routes/userRoutes");
+const appointmentRoutes = require("./routes/appointmentRoutes");
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(express.urlencoded({extended : true}));
 
 // Route Registration
 app.use("/users", userRoutes);
+app.use("/appointments", appointmentRoutes);
 
 app.listen(process.env.PORT || 4000, () => {
 	console.log(`API is now online on port ${process.env.PORT || 4000}`);
