@@ -1,22 +1,18 @@
 const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema ({
-	appointmentId : {
-		type: String,
-		required : [true, "Firs Name is required"]
-	},
 	date : {
 		type: String,
-		required : [true, "Last Name is required"]
+		required : [true, "Date is required"]
 	},
 	time : {
 		type: String,
-		required : [true, "Address is required"]
+		required : [true, "Time is required"]
 	},
 	isAvailable : {
 		type: Boolean,
 		default : true,
-		required : [true, "Contact Number is required"]
+		required : [true, "Availability is required"]
 	},
 	note : {
 		type: String

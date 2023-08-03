@@ -27,3 +27,32 @@ module.exports.getAvailableTime = async (req, res) => {
 	    return res.status(500).send(error);
 	}
 };
+
+// Create appointment
+module.exports.createAppointment = async ( req, res ) => {
+	const { date, time } = req.body;
+	const { isAdmin } = auth.decode(req.headers.authorization);
+
+	try {
+    	if (!isAdmin) {
+			return res.status(403).send(false);
+    	}
+
+    	const existingAppointment = await Appointment.findOne({ date, time});
+
+    	if (existingAppointment) {
+			return res.status(409).send(false);
+    	}
+
+    	const newAppointment = new Appointment({
+    		date,
+			time
+    	});
+
+    	await newAppointment.save();
+    	return res.send(newAppointment);
+	} catch (error) {
+    	console.error("Error adding appointment:", error);
+    	return res.status(500).send("Error adding appointment");
+	}
+}
