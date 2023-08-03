@@ -4,7 +4,7 @@ const appointmentController = require("../controllers/appointmentController");
 const auth = require("../auth")
 
 // Retrieve available schedule
-router.get("/availableTime", appointmentController.getAvailableTime);
+router.post("/availableTime", appointmentController.getAvailableTime);
 
 // Create appointment
 router.post("/createAppointment", appointmentController.createAppointment);

@@ -17,9 +17,10 @@ module.exports.getAvailableTime = async (req, res) => {
 			return appointment.isAvailable === true;
 	    });
 
-	    const availableTime = availableAppointments.map((appointment) => {
-	    	return appointment.time;
-	    })
+	    const availableTime = availableAppointments.map((appointment) => ({
+            time: appointment.time,
+            id: appointment._id
+        }))
 
 	    res.send(availableTime);
 	} catch (error) {
