@@ -35,14 +35,6 @@ const userSchema = new mongoose.Schema ({
 			appointmentId: {
 				type: String,
 				required : [true, "Appointment ID is required"]
-			},
-			date: {
-				type: String,
-				required : [true, "Date is required"]
-			},
-			time: {
-				type: String,
-				required : [true, "Date is required"]
 			}
 		}
 	]
